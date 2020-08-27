@@ -14,29 +14,32 @@ var secretWords = [
 ];
 console.log(secretWords);
 
-const underScores = document.querySelector('#underScores');
+var underScores = document.querySelector('#underScores');
 console.log(underScores);
-const form = document.querySelector('#char');
+var form = document.querySelector('#char');
 console.log(form);
-const buttonClicked = document.querySelector('#pressed')
+var buttonClicked = document.querySelector('#pressed');
 console.log(buttonClicked);
+var counter = document.querySelector('#counter');
+console.log(counter);
+var char = document.querySelector('#wrongLetters');
+console.log(char);
+
 
 
 
 var nowSecretWord = secretWords[Math.floor(Math.random() * secretWords.length)];
-
-let answerArray = [];
+console.log(nowSecretWord);
+var answerArray = [];
 
 for (var a = 0; a < nowSecretWord.length; a++) 
 {
-  answerArray[a] = "_";
+  
+const newDash = document.createElement('SPAN');
+      newDash.textContent = "_ ";
+      underScores.appendChild(newDash);
 
-//   const parent = document.querySelector('#listOfPosts');
-//   const newLI = document.createElement('LI');
-//   const newART = document.createElement('ARTICLE');
-//   const newH2 = document.createElement('H2');
-//   newH2.textContent = this.title;
-//   const newP = document.createElement('P');
+
 //   newP.textContent = this.content;
 //  // const time = new Date().toLocaleString('en-US', { timeZone: 'UTC' });
 //  // timeStamp = document.createElement('TIME'); 

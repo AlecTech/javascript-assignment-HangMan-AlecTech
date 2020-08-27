@@ -27,7 +27,6 @@ console.log(char);
 
 
 
-
 var nowSecretWord = secretWords[Math.floor(Math.random() * secretWords.length)];
 console.log(nowSecretWord);
 var answerArray = [];
@@ -35,10 +34,28 @@ var answerArray = [];
 for (var a = 0; a < nowSecretWord.length; a++) 
 {
   
-const newDash = document.createElement('SPAN');
+const newDash = document.createElement('SPAN');  
       newDash.textContent = "_ ";
       underScores.appendChild(newDash);
 
+}
+
+var remainingLetters = nowSecretWord.length;
+//if statment to append counter in string format (appendChild didn't work)
+if (nowSecretWord.length > 0)
+{   
+    console.log(nowSecretWord);
+    var b = nowSecretWord.length;
+    attempts = b + 6;
+
+    let tempCounter = document.getElementById('counter');
+    console.log(tempCounter);
+    tempCounter.innerText = `Attempts Left: ${attempts}`;
+}
+
+
+
+// ================MAIN GAME LOGIC STARTS HERE=================== //
 
 //   newP.textContent = this.content;
 //  // const time = new Date().toLocaleString('en-US', { timeZone: 'UTC' });
@@ -48,8 +65,3 @@ const newDash = document.createElement('SPAN');
 //   newLI.appendChild(newART);
 //   //newP.appendChild(timeStamp);
 //   parent.appendChild (newLI);  
-
-}
-
-var remainingLetters = nowSecretWord.length;
-

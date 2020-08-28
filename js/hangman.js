@@ -25,6 +25,7 @@ console.log(counter);
 var char = document.querySelector('#wrongLetters');
 console.log(char);
 
+var attempts = 6;
 // var char = document.getElementById('char');
 // console.log(char);
 //var tries = 
@@ -34,20 +35,15 @@ console.log(char);
         var nowSecretWord = secretWords[Math.floor(Math.random() * secretWords.length)];
         console.log(nowSecretWord);
 //if statment to append counter in string format (appendChild didn't work)
-if (nowSecretWord.length > 0)
-{   
-    console.log(nowSecretWord.length);
-    var b = nowSecretWord.length;
-    attempts = b + 6;
-    console.log(attempts);
-    let tempCounter = document.getElementById('counter');
-    tempCounter.innerText = `Attempts Left: ${attempts}`;
-}
 
-        
-        //answerArray for already tried letters
-       // var remainingLetters = nowSecretWord.length;
-        
+    if (nowSecretWord.length > 0)
+    {   
+        console.log(nowSecretWord.length);
+        console.log(attempts);
+        let tempCounter = document.getElementById('counter');
+        tempCounter.innerText = `Attempts Left: ${attempts}`;
+    }
+ 
     
     for (var a = 0; a < nowSecretWord.length; a++) 
     {
@@ -59,26 +55,6 @@ if (nowSecretWord.length > 0)
         underScores.appendChild(newDash);
 
     }
-        
-//do
-
-//{
-    //var gameOver = true;
-
-    function SetUp()
-    {
-        
-
-
-    }
-
-    //while(gameOver = false);
-
-//}
-
-
-
-
 
 // ================MAIN GAME LOGIC STARTS HERE=================== //
 
@@ -102,7 +78,7 @@ form.addEventListener('submit', (event) =>
             {
                 if(nowSecretWord[i]=== newChar) answerArray.push(i);
                 console.log(answerArray);
-
+                
             }
 
             let underScoreElement = document.getElementsByClassName("guess");
@@ -112,66 +88,37 @@ form.addEventListener('submit', (event) =>
             {
               underScoreElement[answerArray[i]].innerText = newChar;
             }
+
         }
         else 
         {
-            alert("Oops strike 1");
+            alert("Oops strike");
             attempts--;
             console.log(attempts);
             let tempCounter = document.getElementById('counter');
             tempCounter.innerText = `Attempts Left: ${attempts}`;
+
+            let newString = document.getElementById('wrongLetters');
+            let li = document.createElement('LI');
+            li.innerText = newChar;
+            newString.appendChild(li);
+            
+            
+            let img = document.getElementById('imageIndex');
+            img.setAttribute('src', "./img/wrong" + attempts + ".png");
+
+            if (attempts<1)
+            {      
+                alert("You've lost");
+                setTimeout(function(){ 
+                    
+                    location.reload()  ;
+                     
+                }, 1500);
+                
+            }
+
         }
 
 
     });
-
-        //const input = newChar.get('')
-        // let a = newChar.get('');
-        // console.log(a);
-                                                
-    /*     if ( a.length >  0)           
-        {      
-            // print out values that are entered by the user at the bottom of the page
-            let data = new Article (a,b);
-            data.output();
-            const time = new Date().toLocaleString('en-US', { timeZone: 'UTC' })      
-            console.log(time);                  
-        }
-        else
-        {
-            alert("Warrning this is am empty input!");
-        }     */
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var turnCount = 11;
-// var counterOfConfirmActions = 0;
-
-// var alreadyUsedLetters = [];
-// //var word = pickWord(secretWords);
-// var remainingLetters = word.length;
-// var answerArray = setupAnswerArray(word);
-
-
-
-
-
-//   newP.textContent = this.content;
-//  // const time = new Date().toLocaleString('en-US', { timeZone: 'UTC' });
-//  // timeStamp = document.createElement('TIME'); 
-//   newART.appendChild(newH2);
-//   newART.appendChild(newP);
-//   newLI.appendChild(newART);
-//   //newP.appendChild(timeStamp);
-//   parent.appendChild (newLI);  

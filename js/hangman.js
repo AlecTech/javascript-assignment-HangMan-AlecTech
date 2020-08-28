@@ -113,9 +113,18 @@ form.addEventListener('submit', (event) =>
               underScoreElement[answerArray[i]].innerText = newChar;
             }
         }
+        else 
+        {
+            alert("Oops strike 1");
+            attempts--;
+            console.log(attempts);
+            let tempCounter = document.getElementById('counter');
+            tempCounter.innerText = `Attempts Left: ${attempts}`;
+        }
+
 
     });
-    
+
         //const input = newChar.get('')
         // let a = newChar.get('');
         // console.log(a);

@@ -10,7 +10,11 @@ var secretWords = [
     "cat",
     "dog",
     "bat",
-    "rat"
+    "rat",
+    "door",
+    "roof",
+    "wall",
+    "floor"
 ];
 console.log(secretWords);
 
@@ -44,7 +48,7 @@ var attempts = 6;
         tempCounter.innerText = `Attempts Left: ${attempts}`;
     }
  
-    
+    //for loop to create new underScore for correct number of undesScores
     for (var a = 0; a < nowSecretWord.length; a++) 
     {
     
@@ -69,18 +73,19 @@ form.addEventListener('submit', (event) =>
         let data = new FormData (form);
         let newChar = data.get('char');
         console.log(newChar);
-
+        //check if letter is present inside the secret word, if TRUE then jump inside if statment
         if(nowSecretWord.includes(newChar))
+
         //console.log(nowSecretWord.includes(newChar));
-        {
+        {   //start collecting letters answerArray
             var answerArray = [];
             for (var i=0; i<nowSecretWord.length; i++)
-            {
+            {   //for every match push new Character to the answerArray
                 if(nowSecretWord[i]=== newChar) answerArray.push(i);
                 console.log(answerArray);
-                
-            }
 
+            }
+            // create new variable to transfer data from answerArray to the webpage for user to see (use class inside SPAN)
             let underScoreElement = document.getElementsByClassName("guess");
             console.log(underScoreElement);
             //loop through array and replace matching indexes with correct letter
@@ -89,7 +94,7 @@ form.addEventListener('submit', (event) =>
               underScoreElement[answerArray[i]].innerText = newChar;
             }
 
-        }
+        }   //else for those mismatch cases: oops alert, print wrong char, and change image 
         else 
         {
             alert("Oops strike");
@@ -108,13 +113,13 @@ form.addEventListener('submit', (event) =>
             img.setAttribute('src', "./img/wrong" + attempts + ".png");
 
             if (attempts<1)
-            {      
+            {      // to reload the page
                 alert("You've lost");
                 setTimeout(function(){ 
                     
                     location.reload()  ;
                      
-                }, 1500);
+                }, 3000);
                 
             }
 

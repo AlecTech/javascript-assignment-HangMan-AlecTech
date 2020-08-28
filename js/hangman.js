@@ -16,7 +16,7 @@ console.log(secretWords);
 
 var underScores = document.querySelector('#underScores');
 console.log(underScores);
-var form = document.querySelector('#char');
+var form = document.querySelector('.form');
 console.log(form);
 var buttonClicked = document.querySelector('#pressed');
 console.log(buttonClicked);
@@ -25,37 +25,138 @@ console.log(counter);
 var char = document.querySelector('#wrongLetters');
 console.log(char);
 
+// var char = document.getElementById('char');
+// console.log(char);
+//var tries = 
 
-
-var nowSecretWord = secretWords[Math.floor(Math.random() * secretWords.length)];
-console.log(nowSecretWord);
-var answerArray = [];
-
-for (var a = 0; a < nowSecretWord.length; a++) 
-{
-  
-const newDash = document.createElement('SPAN');  
-      newDash.textContent = "_ ";
-      underScores.appendChild(newDash);
-
-}
-
-var remainingLetters = nowSecretWord.length;
+// check logic and change so that user doesn loos chanses when guessed
+        var answerArray = [];
+        var nowSecretWord = secretWords[Math.floor(Math.random() * secretWords.length)];
+        console.log(nowSecretWord);
 //if statment to append counter in string format (appendChild didn't work)
 if (nowSecretWord.length > 0)
 {   
-    console.log(nowSecretWord);
+    console.log(nowSecretWord.length);
     var b = nowSecretWord.length;
     attempts = b + 6;
-
+    console.log(attempts);
     let tempCounter = document.getElementById('counter');
-    console.log(tempCounter);
     tempCounter.innerText = `Attempts Left: ${attempts}`;
 }
+
+        
+        //answerArray for already tried letters
+       // var remainingLetters = nowSecretWord.length;
+        
+    
+    for (var a = 0; a < nowSecretWord.length; a++) 
+    {
+    
+        const newDash = document.createElement('SPAN'); 
+        //create class guess to be appended to SPAN tag when new match is found
+        newDash.classList.add("guess");
+        newDash.textContent = "_ ";
+        underScores.appendChild(newDash);
+
+    }
+        
+//do
+
+//{
+    //var gameOver = true;
+
+    function SetUp()
+    {
+        
+
+
+    }
+
+    //while(gameOver = false);
+
+//}
+
+
 
 
 
 // ================MAIN GAME LOGIC STARTS HERE=================== //
+
+form.addEventListener('submit', (event) => 
+    {   //check every step at the time to make sure that input data is still there
+        event.preventDefault();
+        console.log(event);
+
+        
+
+        // method FormData found on website 
+        let data = new FormData (form);
+        let newChar = data.get('char');
+        console.log(newChar);
+
+        if(nowSecretWord.includes(newChar))
+        //console.log(nowSecretWord.includes(newChar));
+        {
+            var answerArray = [];
+            for (var i=0; i<nowSecretWord.length; i++)
+            {
+                if(nowSecretWord[i]=== newChar) answerArray.push(i);
+                console.log(answerArray);
+
+            }
+
+            let underScoreElement = document.getElementsByClassName("guess");
+            console.log(underScoreElement);
+            //loop through array and replace matching indexes with correct letter
+            for (let i = 0; i < answerArray.length; i++) 
+            {
+              underScoreElement[answerArray[i]].innerText = newChar;
+            }
+        }
+
+    });
+    
+        //const input = newChar.get('')
+        // let a = newChar.get('');
+        // console.log(a);
+                                                
+    /*     if ( a.length >  0)           
+        {      
+            // print out values that are entered by the user at the bottom of the page
+            let data = new Article (a,b);
+            data.output();
+            const time = new Date().toLocaleString('en-US', { timeZone: 'UTC' })      
+            console.log(time);                  
+        }
+        else
+        {
+            alert("Warrning this is am empty input!");
+        }     */
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var turnCount = 11;
+// var counterOfConfirmActions = 0;
+
+// var alreadyUsedLetters = [];
+// //var word = pickWord(secretWords);
+// var remainingLetters = word.length;
+// var answerArray = setupAnswerArray(word);
+
+
+
+
 
 //   newP.textContent = this.content;
 //  // const time = new Date().toLocaleString('en-US', { timeZone: 'UTC' });
